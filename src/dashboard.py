@@ -22,13 +22,17 @@ from formation import compute_windowed_formations
 
 st.set_page_config(page_title="AI Tactical Analyst", layout="wide")
 st.title("AI Tactical Analyst")
+from pathlib import Path
+
+DASHBOARD_DIR = Path(__file__).resolve().parent
+SAMPLE_DATA_PATH = DASHBOARD_DIR.parent / "sample_data" / "pitch_tracks.csv"
 
 @st.cache_data
 def load_data():
     try:
         return pd.read_csv(PITCH_TRACKS_CSV)
     except FileNotFoundError:
-        return pd.read_csv("../sample_data/pitch_tracks.csv")
+        return pd.read_csv(SAMPLE_DATA_PATH)
 
 try:
     df = load_data()
