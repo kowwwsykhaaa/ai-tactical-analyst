@@ -16,9 +16,14 @@ from ultralytics import YOLO
 import supervision as sv
 from sklearn.cluster import KMeans
 
+from pathlib import Path
+
 MAX_SECONDS = 15   # cap how much of the uploaded clip gets processed
 FRAME_SKIP = 2      # process every Nth frame to cut compute further
-MODEL_PATH = "../models/football-player-detection.pt"
+
+LIVE_PIPELINE_DIR = Path(__file__).resolve().parent
+MODEL_PATH = str(LIVE_PIPELINE_DIR.parent / "models" / "football-player-detection.pt")
+
 
 CLASS_BALL, CLASS_GOALKEEPER, CLASS_PLAYER, CLASS_REFEREE = 0, 1, 2, 3
 PITCH_LENGTH, PITCH_WIDTH = 105.0, 68.0
