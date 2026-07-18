@@ -21,11 +21,14 @@ from pitch_control import (
 from formation import compute_windowed_formations
 
 st.set_page_config(page_title="AI Tactical Analyst", layout="wide")
-st.title("⚽ AI Tactical Analyst")
+st.title("AI Tactical Analyst")
 
 @st.cache_data
 def load_data():
-    return pd.read_csv(PITCH_TRACKS_CSV)
+    try:
+        return pd.read_csv(PITCH_TRACKS_CSV)
+    except FileNotFoundError:
+        return pd.read_csv("../sample_data/pitch_tracks.csv")
 
 try:
     df = load_data()
