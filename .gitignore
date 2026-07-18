@@ -1,0 +1,7 @@
+venv/
+   __pycache__/
+   *.pyc
+   outputs/
+   data/*.mp4
+   models/*.pt
+   .DS_Store
